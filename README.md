@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+笔记
 
-## Available Scripts
+1. 类组件中声明方法用箭头函数 不用再bind(this) handleClick=()=>{}
 
-In the project directory, you can run:
+2. 让create-react-app支持less 需要eject 修改配置项
 
-### `npm start`
+3. 按需加载 babel-plugin-import
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. antd 栅格系统
+	<Row span={3}></Row> 
+	<Row span={21}></Row> 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+5. src或ajax请求地址中 '/...' 为public文件夹下的文件 即以打包后bundle.js的位置为当前位置
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+6. componentWillMount 一般访问接口 把数据存储在state中 （类似vue中created）
 
-### `npm run build`
+7. state={} 类组件中初始化state
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+8. 对于 obj={a: {a1: n, a2: n}, b: n, c: n} 遍历每一对键值对 用递归（同对象深拷贝原理）
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+9. encodeURI() encodeURIComponent() 区别
+encode-URIComponent()主要用于对URI中的某一段(例如前面URI中的illegal value．htm)进行编码。encodeURI()不会对本身属于URI的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；
+而encodeURIComponent()则会对它发现的任何非标准字符进行编码。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+10. less模块化开发 
+	把less变量放在一个文件中
+	在模块less中先用@import导入这个文件中的变量再使用
 
-### `npm run eject`
+11. jsonp API
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+	jsonp(url, opts, fn)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	opts 对象 可选
+	{
+		param: 'callback函数名',
+		timeout
+	}
+	fn callback函数体
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+12. calc(四则运算)
+	CSS3 新增方法
+	例: width: calc(100% - 10px)
+	运算符前后都需要保留一个空格
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+13. Router内的根节点 可以写成组件 这个组件在打开页面默认加载 并可以通过this.props.children获取这个组件包裹的路由
 
-## Learn More
+14. react-router 4
+	1> 写浏览器端应用 安装react-router-dom
+写react-native 安装react-native-dom
+两者都会将react-router当做依赖安装
+	2> 允许匹配多个路由 如果只想匹配第一个路由 用switch包裹 （reatc-router3中无法匹配多个路由 ）
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+15. 高100vh overflow:auto 实现局部滚动
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+16. 弹框（antd模态框）
+	移动端（如输入验证码）一般水平垂直居中
+	PC一般在屏幕偏上 体验更好
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
