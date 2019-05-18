@@ -19,10 +19,10 @@ src或ajax请求地址中 '/...' 为public文件夹下的文件 即以打包后b
 类组件中初始化state
 
 ### 遍历嵌套对象键值对
-对于 obj={a: {a1: n, a2: n}, b: n, c: n} 遍历每一对键值对 用递归（同对象深拷贝原理）
+对于 obj={a: {a1: n, a2: n}, b: n, c: n} 遍历每一对键值对 对于对象类型的键值用递归（同对象深拷贝原理）
 
 ### encodeURI() encodeURIComponent()
-- encode-URIComponent() 主要用于对URI中的某一段(例如前面URI中的illegal value．htm)进行编码。
+- encodeURIComponent() 主要用于对URI中的某一段(例如前面URI中的illegal value．htm)进行编码。
 - encodeURI()不会对本身属于URI的特殊字符进行编码，例如冒号、正斜杠、问号和井字号
 ；encodeURIComponent() 会对它发现的任何非标准字符进行编码
 
@@ -31,9 +31,9 @@ src或ajax请求地址中 '/...' 为public文件夹下的文件 即以打包后b
 
 ### jsonp API
 - jsonp(url, opts, fn)
-- opts 对象 可选
-- { param: 'callback函数名', timeout	}
-- fn callback函数体
+- url:
+- opts: { param: 'callback函数名', timeout	} (对象类型 可选)
+- fn: callback函数体
 
 ### calc(四则运算)
 - CSS3 新增方法
@@ -41,7 +41,8 @@ src或ajax请求地址中 '/...' 为public文件夹下的文件 即以打包后b
 - 运算符前后都需要保留一个空格
 
 ### router this.props.children
-Router内的根节点 可以写成组件 这个组件在打开页面默认加载 并可以通过this.props.children获取这个组件包裹的路由
+- Router内的根节点 可以写成组件 这个组件在加载Router时默认加载 并可以通过this.props.children获取这个组件包裹的路由
+- Route内的根节点是组件 则在匹配地址时默认加载
 
 ### react-router 4
 - 写浏览器端应用 安装react-router-dom
@@ -56,5 +57,33 @@ Router内的根节点 可以写成组件 这个组件在打开页面默认加载
 - 移动端（如输入验证码）一般水平垂直居中
 - PC一般在屏幕偏上 体验更好
 
+### 同一事件 根据不同参数 将不同state修改为相同值 或调用同一类的不同函数
+handleClick=(type)=>{
+	this.setState({
+		[type]: sameValue
+	})
 
+	Fn[type](arg)
+}
+
+### JSX模板语法
+如果需要在标记属性中写标记 需要用模板语法 且只能写一个根标记
+
+### 遍历二维数组
+outerArr.map(innerArr=>innerArr.map(item=>{...}))
+
+### 内存泄漏
+Link中的路径与路由不匹配时 无法正确加载组件 产生内存泄漏
+
+### AntD栅格系统
+原理
+1. 通过Row在水平方向放置一组Col，内容放在Col内。
+2. 设置Col的span值(1-24) 标识其跨越的范围，如果超过24会另起一行。
+
+支持和flex配合使用
+Row的gutter属性用来设置栅格的间隔（一般为16+8n）px
+响应式栅格系统 设置单位为xs sm md lg xl xxl
+
+### 性能优化
+删除框架组件实例中不必要的代码
 

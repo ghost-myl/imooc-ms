@@ -4,8 +4,18 @@ import Login from './pages/login'
 import App from './App'
 import Admin from './Admin'
 import NoMatch from './pages/noMatch'
-import Buttons from './pages/ui/buttons'
 import Home from './pages/home'
+import Buttons from './pages/ui/buttons'
+import Modals from './pages/ui/modals'
+import Loadings from './pages/ui/loadings'
+import Notices from './pages/ui/notices'
+import Tabs from './pages/ui/tabs'
+import Gallery from './pages/ui/gallery'
+import Carousel from './pages/ui/carousel'
+import FormLogin from './pages/form/login'
+import Register from './pages/form/register'
+
+
 
 export default class BaseRouter extends Component {
     render() {
@@ -19,11 +29,20 @@ export default class BaseRouter extends Component {
                                 <Switch>
                                     <Route path='/admin/home' component={Home} />
                                     <Route path='/admin/ui/buttons' component={Buttons} />
+                                    <Route path='/admin/ui/modals' component={Modals} />
+                                    <Route path='/admin/ui/loadings' component={Loadings} />
+                                    <Route path='/admin/ui/notification' component={Notices} />
+                                    <Route path='/admin/ui/tabs' component={Tabs} />
+                                    <Route path='/admin/ui/gallery' component={Gallery} />
+                                    <Route path='/admin/ui/carousel' component={Carousel} />
+                                    <Route path='/admin/form/login' component={FormLogin} />
+                                    <Route path='/admin/form/reg' component={Register} />
+
                                     <Route component={NoMatch} />
                                 </Switch>
                             </Admin>
                         } />
-                        <Route path='/order/detail' component={Login} />
+                        <Route path='admin/order/detail' component={Login} />
 
                     </Switch>
                 </App>
