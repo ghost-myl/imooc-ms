@@ -39,8 +39,6 @@ export default class NavLeft extends Component {
     render() {
         let { menuTreeNode } = this.state;
 
-
-
         return (
             <div>
                 <div className='logo'>
@@ -50,7 +48,6 @@ export default class NavLeft extends Component {
 
                 <Menu theme='dark'>
                     {menuTreeNode}
-
                 </Menu>
             </div>
         )

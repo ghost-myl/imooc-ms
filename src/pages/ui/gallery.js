@@ -32,7 +32,7 @@ export default class Gallery extends Component {
         const imgList = imgs.map(arrItem => arrItem.map(item => {
             return <Card
                 style={{ marginBottom: 10 }}
-                cover={<img src={'/gallery/' + item} onClick={() => this.openGallery(item)} />}
+                cover={<img alt='' src={'/gallery/' + item} onClick={() => this.openGallery(item)} />}
             >
                 <Card.Meta
                     title="React Admin"
@@ -43,11 +43,10 @@ export default class Gallery extends Component {
         ))
 
         let cols = []
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 4; i++) {
             cols.push(<Col md={5} key={i}>{imgList[i]}</Col>)
         }
-        console.log(cols)
-
+        cols.push(<Col md={4} key={4}>{imgList[4]}</Col>)
 
 
         let { visible, currentImg } = this.state;
@@ -60,9 +59,12 @@ export default class Gallery extends Component {
                     {cols}
                 </Row>
                 <Modal
-
+                    title='image'
                     visible={visible}
                     onCancel={() => { this.setState({ visible: false }) }}
+                    onOk={() => { this.setState({ visible: false }) }}
+                    width={300}
+                    height={500}
                 >
                     <img src={currentImg} alt="" width='100%' />
                 </Modal>

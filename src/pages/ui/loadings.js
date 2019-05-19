@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Spin, Card, Icon, Alert } from 'antd'
+import { Spin, Card, Icon, Alert } from 'antd'
 import './ui.less'
 
 export default class Loadings extends Component {

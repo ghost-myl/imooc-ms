@@ -9,26 +9,6 @@ const Option = Select.Option;
 const TextArea = Input.TextArea;
 
 
-function getBase64(img, callback) {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-}
-
-function beforeUpload(file) {
-    // const isJPG = file.type === 'image/jpeg';
-    // if (!isJPG) {
-    //     message.error('You can only upload JPG file!');
-    // }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-        message.error('Image must smaller than 2MB!');
-    }
-    return isLt2M;
-}
-
-
-
 class Register extends Component {
 
     state = {
@@ -42,7 +22,7 @@ class Register extends Component {
         }
         if (info.file.status === 'done') {
             // Get this url from response in real world.
-            getBase64(info.file.originFileObj, imageUrl =>
+            this.getBase64(info.file.originFileObj, imageUrl =>
                 this.setState({
                     imageUrl,
                     loading: false,
@@ -52,6 +32,30 @@ class Register extends Component {
     };
 
 
+    getBase64 = (img, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(img);
+    }
+
+    beforeUpload = (file) => {
+        // const isJPG = file.type === 'image/jpeg';
+        // if (!isJPG) {
+        //     message.error('You can only upload JPG file!');
+        // }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('Image must smaller than 2MB!');
+        }
+        return isLt2M;
+    }
+
+    handleSubmit = () => {
+        // 将表单信息拼凑成对象
+        let userInfo = this.props.form.getFieldsValue()
+        message.success(`${userInfo.userName}，恭喜你注册成功`)
+    }
+
     render() {
         const uploadButton = (
             <div>
@@ -60,18 +64,30 @@ class Register extends Component {
             </div>
         );
         const imageUrl = this.state.imageUrl;
-
+        const { beforeUpload, handleChange, handleSubmit } = this;
 
         const { getFieldDecorator } = this.props.form;
+
         const formItemLayout = {
             // Form或FormItem属性
             labelCol: {
-                xs: 24,
+                xs: 24, //xs: {span: 24}的简写
                 sm: 4,
             },
             wrapperCol: {
                 xs: 24,
                 sm: 12
+            }
+        }
+
+        // 协议的偏移布局
+        const offsetLayout = {
+            wrapperCol: {
+                xs: 24,
+                sm: {
+                    span: 12,
+                    offset: 4 //左侧标题占的空间
+                }
             }
         }
 
@@ -205,12 +221,29 @@ class Register extends Component {
                                         listType="picture-card"
                                         className="avatar-uploader"
                                         showUploadList={false}
-                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76" //上传的接口
                                         beforeUpload={beforeUpload}
-                                        onChange={this.handleChange}
+                                        onChange={handleChange}
                                     >
                                         {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
                                     </Upload>
+                                )
+                            }
+                        </FormItem>
+                        <FormItem {...offsetLayout}>
+                            {
+                                getFieldDecorator('contract', {})(
+                                    <Checkbox>我已阅读过<button>协议</button></Checkbox>
+                                )
+                            }
+                        </FormItem>
+                        <FormItem {...offsetLayout}>
+                            {
+                                getFieldDecorator('register')(
+                                    <Button
+                                        type='primary'
+                                        onClick={handleSubmit}
+                                    >注册</Button>
                                 )
                             }
                         </FormItem>

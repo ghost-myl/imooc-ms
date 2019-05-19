@@ -19,6 +19,7 @@ export default class Admin extends Component {
                     <Header />
 
                     <Row className='content'>
+
                         {this.props.children}
                     </Row>
 

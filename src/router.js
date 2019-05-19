@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import React, { Component } from 'react'
 import Login from './pages/login'
 import App from './App'
@@ -14,6 +14,10 @@ import Gallery from './pages/ui/gallery'
 import Carousel from './pages/ui/carousel'
 import FormLogin from './pages/form/login'
 import Register from './pages/form/register'
+import BasicTable from './pages/table/basicTable'
+import AdvancedTable from './pages/table/advancedTable'
+import City from './pages/city'
+
 
 
 
@@ -37,12 +41,18 @@ export default class BaseRouter extends Component {
                                     <Route path='/admin/ui/carousel' component={Carousel} />
                                     <Route path='/admin/form/login' component={FormLogin} />
                                     <Route path='/admin/form/reg' component={Register} />
+                                    <Route path='/admin/table/basic' component={BasicTable} />
+                                    <Route path='/admin/table/high' component={AdvancedTable} />
+                                    <Route path='/admin/city' component={City} />
+
+                                    <Redirect to="/admin/home" />
 
                                     <Route component={NoMatch} />
+
                                 </Switch>
                             </Admin>
                         } />
-                        <Route path='admin/order/detail' component={Login} />
+                        {/* <Route path='admin/order/detail' component={Login} /> */}
 
                     </Switch>
                 </App>

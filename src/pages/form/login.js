@@ -73,7 +73,7 @@ class FormLogin extends Component {
                                     initialValue: true
                                 })(<Checkbox>记住密码</Checkbox>)
                             }
-                            <a href="#" >忘记密码</a>
+                            <button>忘记密码</button>
                         </FormItem>
                         <FormItem>
                             <Button onClick={handleSubmit}>登录</Button>

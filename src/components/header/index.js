@@ -31,7 +31,6 @@ export default class Header extends Component {
             url: 'http://api.map.baidu.com/telematics/v3/weather?location=' + encodeURIComponent(city) + '&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
         })
             .then(res => {
-                console.log(res)
                 if (res.status === 'success') {
                     let data = res.results[0].weather_data[0];
                     this.setState({
@@ -58,7 +57,7 @@ export default class Header extends Component {
                         <span>欢迎，</span>
 
                         {/* <span>欢迎，{this.state.userName}</span> */}
-                        <a href="#">退出</a>
+                        <span>退出</span>
                     </Col>
                 </Row>
                 {/* {
