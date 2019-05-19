@@ -6,9 +6,6 @@
 ### 让create-react-app支持less
 	eject后在webpack.config.base.js修改loader配置项
 
-### antd 栅格系统
-	在Row中设置 span={数字} 来分割（本质是百分比） 
-
 ### 路径问题
 	src或ajax请求地址中 '/...' 为public文件夹下的文件 即以打包后bundle.js的位置为当前位置
 
@@ -46,8 +43,8 @@
 
 ### react-router 4
 	- 写浏览器端应用 安装react-router-dom
-	写react-native 安装react-native-dom
-	两者都会将react-router当做依赖安装
+	  写react-native 安装react-native-dom
+	  两者都会将react-router当做依赖安装
 	- 允许匹配多个路由 如果只想匹配第一个路由 用switch包裹 （reatc-router3中无法匹配多个路由 ）
 
 ### 局部滚动
@@ -99,7 +96,9 @@
 
 ### AntD 表单API
 	通过 Form.create()(表单组件名) 将方法传入表单组件的props.form
-	注册表单项 getFieldsDecorator(id)(标记) 被该方法包装过的表单控件自动添加value(实现双向数据绑定) onChange; 设置表单值 setFiledsValue
+	注册表单项 getFieldsDecorator(id)(标记) 
+	被该方法包装过的表单控件自动添加value(实现双向数据绑定) 和onChange
+	设置表单值 setFiledsValue
 		- 默认值 
 		- 正则匹配 
 		- 是否必选 
