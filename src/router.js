@@ -17,7 +17,7 @@ import Register from './pages/form/register'
 import BasicTable from './pages/table/basicTable'
 import AdvancedTable from './pages/table/advancedTable'
 import City from './pages/city'
-
+import Common from './common'
 
 
 
@@ -28,6 +28,12 @@ export default class BaseRouter extends Component {
                 <App>
                     <Switch>
                         <Route path='/login' component={Login} />
+                        <Route path='/common' render={() => {
+                            return <Common>
+                                {/* <Route path='/order/detail' component={Login} /> */}
+                            </Common>
+                        }} />
+
                         <Route path='/admin' component={() =>
                             <Admin>
                                 <Switch>
@@ -52,7 +58,6 @@ export default class BaseRouter extends Component {
                                 </Switch>
                             </Admin>
                         } />
-                        {/* <Route path='admin/order/detail' component={Login} /> */}
 
                     </Switch>
                 </App>
