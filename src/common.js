@@ -5,7 +5,14 @@ import './style/common.less'
 
 
 export default class Common extends Component {
+
+    test = {
+        a: 1
+    }
+
     render() {
+        console.log(this.test.a)
+        this.test.a = this.test.a + 1;
 
         return (
             <div>

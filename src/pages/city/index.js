@@ -7,7 +7,10 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 export default class City extends Component {
+    params = { a: 1 }
     render() {
+        console.dir(this)
+
         return (
             <Card>
                 <FilterItem />

@@ -96,18 +96,69 @@
 
 ### AntD 表单API
 	通过 Form.create()(表单组件名) 将方法传入表单组件的props.form
-	注册表单项 getFieldsDecorator(id)(标记) 
+	注册表单项 getFieldsDecorator(id,{initialValue, rules, required, message})(标记) 
 	被该方法包装过的表单控件自动添加value(实现双向数据绑定) 和onChange
 	设置表单值 setFiledsValue
-		- 默认值 
-		- 正则匹配 
-		- 是否必选 
-		- 不匹配时的提示信息
 	获取表单信息 getFieldsValue()
 	同步提交表单信息 validateFields((err,values)=>{})
+	重置表单信息 resetFields()
 
 ### AntD Table 
 	dataSource中render方法 处理表单字段（如sex:1->男）
 	rowSelection {selectedKeys, onChange} 选中表格项后的操作
-	分页 pagination(res,callback) 页码数据从res中获取
-	不需要刷新页面的变量 可以声明为组件的属性(this.属性名) 不需要放在state中
+	
+### 分页 pagination(res,onChange的callback) 
+	不需要刷新页面的变量 可以声明为组件的普通属性(this.属性名) 不需要放在state中
+	封装request函数：
+		发送接口地址和页码 
+		接收对应页码的表格数据 
+		修改state中的list和pagination
+
+### 打开空白新页面
+	window.open(url, '_blank')
+
+### 使用通过脚本引入的全局变量
+	React是基于模块化开发的单页应用 只能使用加载的变量(每个模块是一个作用域)
+	要通过window.变量名访问通过脚本引入的全局变量
+
+### Axios参数
+	params: 添加到urlencode中，用于get请求
+	data: 添加到请求体（body）中的， 用于post请求
+	两者都传JS对象 Axios转成对应的数据格式
+
+### ref
+	React中通过ref获取HTML标记对应的真实DOM或类组件实例
+	AntD中通过wrappedComponentRef获取组件实例
+	（不能再函数组件上使用ref 因为没有实例）
+
+	使用ref的场景：获取焦点 触发动画 媒体播放
+
+	React16.3前推荐使用ref=回调函数 (ref=字符串有一些性能问题 将在新版本中被废弃)
+	React16.3引入React.createRef()
+		constructor(){
+			super();
+			this.myInput=React.createRef()
+		}
+		focusInput=()=>{
+			this.myInput.current.focus()
+		}
+		render(){
+			return (
+				<div>
+					<input ref={this.myInput}/>
+				</div>
+			)
+		}
+	
+### React中使用ECharts
+	按需加载
+	先引入主模块 import echarts from 'echarts/lib/echarts'
+	从'echarts/lib/component/...'中引入相应的组件
+	引入 echarts-for-react 实现组件式开发 避免使用new
+
+	在componentWillMount中注册主题registerTheme
+	option{ title, tooltip, xAxis, yAxis, series:[{type, data},{},{}] }
+
+### npm降级
+	安装n插件
+	n 版本号 安装对应版本的npm

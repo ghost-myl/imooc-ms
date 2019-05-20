@@ -22,7 +22,10 @@ import Common from './common'
 
 
 export default class BaseRouter extends Component {
+
+
     render() {
+
         return (
             <Router>
                 <App>
