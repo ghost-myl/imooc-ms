@@ -119,7 +119,8 @@
 
 ### 使用通过脚本引入的全局变量
 	React只能使用通过import或require导入的变量
-	访问通过脚本引入的全局变量 通过 1. window.变量名 2. import脚本到使用这个库的模块或入口文件中
+	访问通过脚本引入的全局变量 通过 
+	1. window.变量名 2. import脚本到使用这个库的模块或入口文件中
 
 	模块默认defer
 
@@ -160,7 +161,21 @@
 	引入 echarts-for-react 实现组件式开发 避免使用new
 
 	在componentWillMount中注册主题registerTheme
-	option{ title, tooltip, xAxis, yAxis, series:[{type, data},{},{}] }
+	option:{ 
+		title, 
+		tooltip:{
+			trigger: 鼠标悬浮显示项
+			formatter: 
+		}, 
+		xAxis, 
+		yAxis, 
+		series:[
+			{type, radius, data}, *radius写多个值为环形
+			{},
+			{}
+		] 
+	}
+	南丁格尔图：通过半径大小体现数据大小
 
 ### npm降级
 	安装n插件
