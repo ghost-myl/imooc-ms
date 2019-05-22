@@ -118,8 +118,11 @@
 	window.open(url, '_blank')
 
 ### 使用通过脚本引入的全局变量
-	React是基于模块化开发的单页应用 只能使用加载的变量(每个模块是一个作用域)
-	要通过window.变量名访问通过脚本引入的全局变量
+	React只能使用通过import或require导入的变量
+	访问通过脚本引入的全局变量 通过 1. window.变量名 2. import脚本到使用这个库的模块或入口文件中
+
+	模块默认defer
+
 
 ### Axios参数
 	params: 添加到urlencode中，用于get请求
